@@ -1,5 +1,6 @@
 bool isWin(chargame[3][3]){
  bool win = false;
+ //row
   if(game[0][0] == game[0][1] && game[0][1] == game[0][2] && (game[0][0] == 'X'|| game[0][0] == 'O')) win = true;
   if(game[1][0] == game[1][1] && game[1][1] == game[1][2] && (game[1][0] == 'X'|| game[1][0] == 'O')) win = true;
   if(game[2][0] == game[2][1] && game[2][1] == game[2][2] && (game[2][0] == 'X'|| game[2][0] == 'O')) win = true;
@@ -15,8 +16,17 @@ bool isWin(chargame[3][3]){
   return win;
  }
  
+ bool isEmpty(char cell){ 
+     bool isEmpty = true;   
+     If(cell != ‘ ‘}{ 
+       isEmpty =false; 
+     } 
+     return isEmpty; 
+ } 
+
+
  int main(){
-  int i, j;
+  int row, column;
   char game[3][3] = {' '}; // Tic-tac-toe
   char player1 = 'X';
   char player2 = 'O';
@@ -30,20 +40,32 @@ bool isWin(chargame[3][3]){
       Else 
         cout << "Player 2: ";
         
-      cout << "Which cell to mark? i:[1..3], j:[1..3]: ";
-      cin >> i >> j;
+      cout << "Which cell to mark? row:[0..2], column:[0..2]: ";
+      cin >> row >> column;
       
-      if(turn == false)
-        game[i][j] = 'X';
-      else
-        game[i][j] = 'O';
-      
-      if(isWin(game)){
-        cout << "Win!"<< endl;
-        break; // need to terminate the problem
+      //check valid coordinate range input 
+      if(row > 2 || row > 2 || column < 0 || column< 0){ 
+       //check is the cell empty
+       if(isEmpty(game[row][column]){
+        if(turn == false)
+          game[row][column] = 'X';
+        else
+          game[row][column] = 'O';
+
+        if(isWin(game)){
+          cout << "Win!"<< endl;
+          break; // need to terminate the problem
+        }
+       }else{
+            cout << "Coordinate is occupied. Please input another coordinate"; 
+            cin >> row >> column; 
+       }
+      }else{
+            cout << "Incorrect coordinate please input within i:[0..2], j:[0..2]:"; 
+            cin >> row >> column; 
       }
   }
-  if(i==3) // all celles with i=0 to 2 have been inputted above but no winner yet
+  if (!isWin(game) && n==9)) // check whether the round ended and the game hasnt has a winner
     cout << "Tie!"<< endl;
     
   // show the game to console
@@ -51,4 +73,5 @@ bool isWin(chargame[3][3]){
   cout << game[1][0] << " "<< game[1][1] << " "<< game[1][2] << endl;
   cout << game[2][0] << " "<< game[2][1] << " "<< game[2][2] << endl;
   
-return 0;}
+ return 0;
+}
