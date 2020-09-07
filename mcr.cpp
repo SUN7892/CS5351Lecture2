@@ -44,7 +44,7 @@ bool isWin(chargame[3][3]){
       cin >> row >> column;
       
       //check valid coordinate range input 
-      if(row > 2 || row > 2 || column < 0 || column< 0){ 
+      if(row < 3 || column < 3 || row > -1 || column > -1){ 
        //check is the cell empty
        if(isEmpty(game[row][column]){
         if(turn == false)
